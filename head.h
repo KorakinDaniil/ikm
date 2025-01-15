@@ -7,18 +7,18 @@
 
 using namespace std;
 
-const int MAX_DIGITS = 10000; // Максимальное количество цифр в числе
+const int MAX_DIGITS = 10000; // РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ С†РёС„СЂ РІ С‡РёСЃР»Рµ
 
-string addLargeNumbers(const string& num1, const string& num2);// Функция для сложения длинных чисел
-string multiplyLargeNumbers(const string& num1, const string& num2);// Функция для умножения длинных чисел
-string subtractLargeNumbers(const string num1, const string num2);// Функция для вычитания длинных чисел
-string divideLargeNumbers(const string& num1, const string& num2);// Функция для деления длинных чисел
+string addLargeNumbers(const string& num1, const string& num2);// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СЃР»РѕР¶РµРЅРёСЏ РґР»РёРЅРЅС‹С… С‡РёСЃРµР»
+string multiplyLargeNumbers(const string& num1, const string& num2);// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СѓРјРЅРѕР¶РµРЅРёСЏ РґР»РёРЅРЅС‹С… С‡РёСЃРµР»
+string subtractLargeNumbers(const string num1, const string num2);// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹С‡РёС‚Р°РЅРёСЏ РґР»РёРЅРЅС‹С… С‡РёСЃРµР»
+string divideLargeNumbers(const string& num1, const string& num2);// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РґРµР»РµРЅРёСЏ РґР»РёРЅРЅС‹С… С‡РёСЃРµР»
 
-string factorial(long long int n);// Функция для вычисления факториала
+string factorial(long long int n);// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ С„Р°РєС‚РѕСЂРёР°Р»Р°
 
-bool isLessThan(const string& num1, const string& num2);// Функция для сравнения двух чисел
-string gcd(const string& a, const string& b);// Функция для нахождения наибольшего общего делителя (НОД)
+bool isLessThan(const string& num1, const string& num2);// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ РґРІСѓС… С‡РёСЃРµР»
+string gcd(const string& a, const string& b);// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ РЅР°РёР±РѕР»СЊС€РµРіРѕ РѕР±С‰РµРіРѕ РґРµР»РёС‚РµР»СЏ (РќРћР”)
 
-void addFractions(int n, string* results);// Функция для вычисления суммы дробей
+void addFractions(int n, string* results);// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ СЃСѓРјРјС‹ РґСЂРѕР±РµР№
 
 #endif 
