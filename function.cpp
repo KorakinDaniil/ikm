@@ -1,6 +1,6 @@
 #include "head.h"
 
-// Функция для сложения длинных чисел
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СЃР»РѕР¶РµРЅРёСЏ РґР»РёРЅРЅС‹С… С‡РёСЃРµР»
 string addLargeNumbers(const string& num1, const string& num2)
 {
     string result;
@@ -25,7 +25,7 @@ string addLargeNumbers(const string& num1, const string& num2)
     return result;
 }
 
-// Функция для умножения длинных чисел
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СѓРјРЅРѕР¶РµРЅРёСЏ РґР»РёРЅРЅС‹С… С‡РёСЃРµР»
 string multiplyLargeNumbers(const string& num1, const string& num2)
 {
     string result(num1.size() + num2.size(), '0');
@@ -37,12 +37,12 @@ string multiplyLargeNumbers(const string& num1, const string& num2)
             int mul = (num1[i] - '0') * (num2[j] - '0');
             int sum = mul + (result[i + j + 1] - '0');
 
-            result[i + j + 1] = (sum % 10) + '0'; // Сохраняем последнюю цифру
-            result[i + j] += sum / 10; // Добавляем перенос
+            result[i + j + 1] = (sum % 10) + '0'; // РЎРѕС…СЂР°РЅСЏРµРј РїРѕСЃР»РµРґРЅСЋСЋ С†РёС„СЂСѓ
+            result[i + j] += sum / 10; // Р”РѕР±Р°РІР»СЏРµРј РїРµСЂРµРЅРѕСЃ
         }
     }
 
-    // Удаляем ведущие нули
+    // РЈРґР°Р»СЏРµРј РІРµРґСѓС‰РёРµ РЅСѓР»Рё
     size_t start = 0;
     while (start < result.size() && result[start] == '0')
     {
@@ -52,7 +52,7 @@ string multiplyLargeNumbers(const string& num1, const string& num2)
     return start == result.size() ? "0" : result.substr(start);
 }
 
-// Функция для вычитания длинных чисел
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹С‡РёС‚Р°РЅРёСЏ РґР»РёРЅРЅС‹С… С‡РёСЃРµР»
 string subtractLargeNumbers(string num1, string num2){
     while (num1.length() < num2.length()) num1 = '0' + num1;
     while (num2.length() < num1.length()) num2 = '0' + num2;
@@ -76,7 +76,7 @@ string subtractLargeNumbers(string num1, string num2){
     }
 
     reverse(result.begin(), result.end());
-    // Удаляем ведущие нули
+    // РЈРґР°Р»СЏРµРј РІРµРґСѓС‰РёРµ РЅСѓР»Рё
     while (result.length() > 1 && result[0] == '0') {
         result.erase(result.begin());
     }
@@ -84,45 +84,45 @@ string subtractLargeNumbers(string num1, string num2){
     return result;
 }
 
-// Функция для деления длинных чисел
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РґРµР»РµРЅРёСЏ РґР»РёРЅРЅС‹С… С‡РёСЃРµР»
 string divideLargeNumbers(const string& num1, const string& num2)
 {
-    if (num1 == "0" || isLessThan(num1, num2)) return "0"; // Если делимое 0 или меньше делителя
+    if (num1 == "0" || isLessThan(num1, num2)) return "0"; // Р•СЃР»Рё РґРµР»РёРјРѕРµ 0 РёР»Рё РјРµРЅСЊС€Рµ РґРµР»РёС‚РµР»СЏ
 
-    string result;  // Результат деления
-    string current; // Текущее значение (остаток)
-    string divisor = num2; // Делитель
+    string result;  // Р РµР·СѓР»СЊС‚Р°С‚ РґРµР»РµРЅРёСЏ
+    string current; // РўРµРєСѓС‰РµРµ Р·РЅР°С‡РµРЅРёРµ (РѕСЃС‚Р°С‚РѕРє)
+    string divisor = num2; // Р”РµР»РёС‚РµР»СЊ
     long long int n1 = num1.size();
     long long int n2 = num2.size();
 
     for (long long int i = 0; i < n1; i++)
     {
-        current += num1[i]; // Добавляем следующую цифру к текущему значению
-        int count = 0; // Счетчик частного для данного остатка
+        current += num1[i]; //Р”РѕР±Р°РІР»СЏРµРј СЃР»РµРґСѓСЋС‰СѓСЋ С†РёС„СЂСѓ Рє С‚РµРєСѓС‰РµРјСѓ Р·РЅР°С‡РµРЅРёСЋ
+        int count = 0; // РЎС‡РµС‚С‡РёРє С‡Р°СЃС‚РЅРѕРіРѕ РґР»СЏ РґР°РЅРЅРѕРіРѕ РѕСЃС‚Р°С‚РєР°
 
-        // Пока текущее значение больше или равно делителю
+        // РџРѕРєР° С‚РµРєСѓС‰РµРµ Р·РЅР°С‡РµРЅРёРµ Р±РѕР»СЊС€Рµ РёР»Рё СЂР°РІРЅРѕ РґРµР»РёС‚РµР»СЋ
         while (!isLessThan(current, divisor))
         {
-            current = subtractLargeNumbers(current, divisor); // Вычитаем делитель
-            count++; // Увеличиваем счетчик
+            current = subtractLargeNumbers(current, divisor); // Р’С‹С‡РёС‚Р°РµРј РґРµР»РёС‚РµР»СЊ
+            count++; // РЈРІРµР»РёС‡РёРІР°РµРј СЃС‡РµС‚С‡РёРє
         }
-        result += (count + '0'); // Добавляем количество кратных
+        result += (count + '0'); // Р”РѕР±Р°РІР»СЏРµРј РєРѕР»РёС‡РµСЃС‚РІРѕ РєСЂР°С‚РЅС‹С…
     }
 
-    // Удаление ведущих нулей
+    // РЈРґР°Р»РµРЅРёРµ РІРµРґСѓС‰РёС… РЅСѓР»РµР№
     size_t start = 0;
     while (start < result.size() && result[start] == '0')
     {
         start++;
     }
 
-    return start == result.size() ? "0" : result.substr(start); // Если всё нули, возвращаем "0"
+    return start == result.size() ? "0" : result.substr(start); // Р•СЃР»Рё РІСЃС‘ РЅСѓР»Рё, РІРѕР·РІСЂР°С‰Р°РµРј "0"
 }
 
-// Функция для вычисления факториала
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ С„Р°РєС‚РѕСЂРёР°Р»Р°
 string factorial(long long int n)
 {
-    string result = "1"; // Факториал 0! и 1! равен 1
+    string result = "1"; // Р¤Р°РєС‚РѕСЂРёР°Р» 0! Рё 1! СЂР°РІРµРЅ 1
 
     for (long long int i = 2; i <= n; i++)
     {
@@ -132,49 +132,50 @@ string factorial(long long int n)
     return result;
 }
 
-// Функция для сравнения двух чисел
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ РґРІСѓС… С‡РёСЃРµР»
 bool isLessThan(const string& num1, const string& num2)
 {
     if (num1.size() < num2.size()) return true;
     if (num1.size() > num2.size()) return false;
-    return num1 < num2; // Сравниваем строку
+    return num1 < num2; // РЎСЂР°РІРЅРёРІР°РµРј СЃС‚СЂРѕРєСѓ
 }
 
-// Функция для нахождения наибольшего общего делителя (НОД) 
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ РЅР°РёР±РѕР»СЊС€РµРіРѕ РѕР±С‰РµРіРѕ РґРµР»РёС‚РµР»СЏ (РќРћР”) 
 string gcd(const string& a, const string& b)
 {
-    if (b == "0") return a; // НОД(a, 0) = a
-    if (isLessThan(a, b)) return gcd(b, a); // Обмен значений, чтобы a всегда было больше b
-    return gcd(b, subtractLargeNumbers(a, b)); // Используем алгоритм Евклида
+    if (b == "0") return a; // РќРћР”(a, 0) = a
+    if (isLessThan(a, b)) return gcd(b, a); // РћР±РјРµРЅ Р·РЅР°С‡РµРЅРёР№, С‡С‚РѕР±С‹ a РІСЃРµРіРґР° Р±С‹Р»Рѕ Р±РѕР»СЊС€Рµ b
+    return gcd(b, subtractLargeNumbers(a, b)); // РСЃРїРѕР»СЊР·СѓРµРј Р°Р»РіРѕСЂРёС‚Рј Р•РІРєР»РёРґР°
 }
 
-// Функция для сложения дробей и вывода результата
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СЃР»РѕР¶РµРЅРёСЏ РґСЂРѕР±РµР№ Рё РІС‹РІРѕРґР° СЂРµР·СѓР»СЊС‚Р°С‚Р°
 void addFractions(int n, string* results)
 {
     string sumNumerator = "0", sumDenominator = "1";
 
-    results[0] = "1"; // Сохраняем результат для 0!
-    results[1] = "1"; // Сохраняем результат для 1!
+    results[0] = "1"; // РЎРѕС…СЂР°РЅСЏРµРј СЂРµР·СѓР»СЊС‚Р°С‚ РґР»СЏ 0!
+    results[1] = "1"; // РЎРѕС…СЂР°РЅСЏРµРј СЂРµР·СѓР»СЊС‚Р°С‚ РґР»СЏ 1!
 
-    // Высчитываем факториал
+    // Р’С‹СЃС‡РёС‚С‹РІР°РµРј С„Р°РєС‚РѕСЂРёР°Р»
     for (long long int i = 2; i <= n; i++)
     {
         string fact = factorial(i);
-        results[i] = fact; // Сохраняем результат текущей итерации
+        results[i] = fact; // РЎРѕС…СЂР°РЅСЏРµРј СЂРµР·СѓР»СЊС‚Р°С‚ С‚РµРєСѓС‰РµР№ РёС‚РµСЂР°С†РёРё
     }
 
     for (long long int i = 1; i <= n; i++)
     {
-        // Новый знаменатель: sumDenominator * i!
+        // РќРѕРІС‹Р№ Р·РЅР°РјРµРЅР°С‚РµР»СЊ: sumDenominator * i!
         string newDenominator = multiplyLargeNumbers(sumDenominator, results[i]);
 
-        // Новый числитель: (sumNumerator * i!) + (1 * (i-1)!)
+        // РќРѕРІС‹Р№ С‡РёСЃР»РёС‚РµР»СЊ: (sumNumerator * i!) + (1 * (i-1)!)
         string newNumerator = addLargeNumbers(multiplyLargeNumbers(sumNumerator, results[i]), multiplyLargeNumbers("1", results[i - 1]));
 
         sumNumerator = newNumerator;
         sumDenominator = newDenominator;
     }
-
+    
+    //РЎРѕРєСЂР°С‰РµРЅРёРµ РґСЂРѕР±Рё
     /*string numGCD = gcd(sumNumerator, sumDenominator);
     sumNumerator = divideLargeNumbers(sumNumerator, numGCD);
     sumDenominator = divideLargeNumbers(sumDenominator, numGCD);*/
