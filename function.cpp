@@ -20,8 +20,9 @@ string addLargeNumbers(const string& num1, const string& num2)
         i--;
         j--;
     }
-
+    // Переворачиваем результат, чтобы получить правильный порядок
     reverse(result.begin(), result.end());
+    
     return result;
 }
 
@@ -53,31 +54,40 @@ string multiplyLargeNumbers(const string& num1, const string& num2)
 }
 
 // Функция для вычитания длинных чисел
-string subtractLargeNumbers(string num1, string num2){
+string subtractLargeNumbers(string num1, string num2)
+{
+    // Делаем строки одинаковой длины
     while (num1.length() < num2.length()) num1 = '0' + num1;
     while (num2.length() < num1.length()) num2 = '0' + num2;
 
     string result = "";
     int carry = 0;
 
-    for (long long int i = num1.length() - 1; i >= 0; i--) {
+    // Вычитаем по цифрам справа налево
+    for (long long int i = num1.length() - 1; i >= 0; i--)
+    {
         int digit1 = num1[i] - '0';
         int digit2 = num2[i] - '0' + carry;
 
-        if (digit1 < digit2) {
+        // Если digit1 меньше digit2, нужно занять 1 у предыдущей позиции
+        if (digit1 < digit2)
+        {
             digit1 += 10;
             carry = 1;
         }
-        else {
+        else
+        {
             carry = 0;
         }
 
         result += (digit1 - digit2) + '0';
     }
-
+    // Переворачиваем результат, чтобы получить правильный порядок
     reverse(result.begin(), result.end());
+    
     // Удаляем ведущие нули
-    while (result.length() > 1 && result[0] == '0') {
+    while (result.length() > 1 && result[0] == '0')
+    {
         result.erase(result.begin());
     }
 
@@ -165,20 +175,41 @@ void addFractions(int n, string* results)
 
     for (long long int i = 1; i <= n; i++)
     {
-        // Новый знаменатель: sumDenominator * i!
-        string newDenominator = multiplyLargeNumbers(sumDenominator, results[i]);
+        // Новый знаменатель: newDenominator = i!
+        string newDenominator = results[i];
 
-        // Новый числитель: (sumNumerator * i!) + (1 * (i-1)!)
-        string newNumerator = addLargeNumbers(multiplyLargeNumbers(sumNumerator, results[i]), multiplyLargeNumbers("1", results[i - 1]));
+        // Новый числитель: newNumerator = (sumNumerator * i) + 1
+        string newNumerator = addLargeNumbers(multiplyLargeNumbers(sumNumerator, to_string(i)), "1");
 
         sumNumerator = newNumerator;
         sumDenominator = newDenominator;
     }
     
-    //Сокращение дроби
-    /*string numGCD = gcd(sumNumerator, sumDenominator);
+    // Сокращение дроби
+    string numGCD = gcd(sumNumerator, sumDenominator);
     sumNumerator = divideLargeNumbers(sumNumerator, numGCD);
-    sumDenominator = divideLargeNumbers(sumDenominator, numGCD);*/
+    sumDenominator = divideLargeNumbers(sumDenominator, numGCD);
+
+    sumNumerator = replaceNonZerosWithZeros(sumNumerator);
+    sumDenominator = replaceNonZerosWithZeros(sumDenominator);
 
     cout << sumNumerator << "/" << sumDenominator << endl;
+}
+
+// Функция для замены постороннего символа на ноль
+string replaceNonZerosWithZeros(const string& input)
+{
+    string result = input; // Создаем копию входной строки
+
+    // Проходим по каждому символу строки
+    for (char& c : result)
+    {
+        // Если символ не является цифрой
+        if (c < '0' || c > '9')
+        { 
+            c = '0'; // Заменяем его на '0'
+        }
+    }
+
+    return result;
 }
