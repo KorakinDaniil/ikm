@@ -21,4 +21,6 @@ string gcd(const string& a, const string& b);// Функция для нахож
 
 void addFractions(int n, string* results);// Функция для вычисления суммы дробей
 
+string replaceNonZerosWithZeros(const string& input);// Функция для замены постороннего символа на ноль
+
 #endif 
