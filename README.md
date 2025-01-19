@@ -1,4 +1,4 @@
-Делал Microsoft Visual Studio 2022.
+Делал в Microsoft Visual Studio 2022.
 
 
 ConsoleApplication1 - функция с main для запуска.
