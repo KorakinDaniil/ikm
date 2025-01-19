@@ -1,7 +1,5 @@
 ﻿#include "head.h"
 
-using namespace std;
-
 int main()
 {
     setlocale(LC_ALL, "russian");
@@ -12,6 +10,7 @@ int main()
     bool validInput;
     string* results = new string[MAX_DIGITS]; // Массив для хранения результатов факториала
     cout << "Введите натуральное число N > 10: ";
+    
     // Проверка на ошибки ввода
     do
     {
